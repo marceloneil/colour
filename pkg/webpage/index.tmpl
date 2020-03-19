@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>colour</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:600,700&display=swap" rel="stylesheet">
+    <style>
+        html {
+            background-color: rgb(18, 18, 18);
+            font-family: 'Montserrat', 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Kaku Gothic Pro', 'Meiryo', 'MS Gothic', sans-serif;
+        }
+
+        .colour-list {
+            display: flex;
+            flex-direction: row;
+            flex-flow: row wrap;
+            justify-content: center;
+            margin-top: 64px;
+        }
+
+        .colour-header-container {
+            position: relative;
+        }
+
+        .colour-header {
+            font-size: 28px;
+            font-weight: 600;
+            color: rgb(255, 255, 255);
+            margin-bottom: 24px;
+            position: absolute;
+            margin-left: 20px;
+            top: -64px;
+            line-height: 40px;
+        }
+
+        .colour-container {
+            width: 200px;
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .colour-box {
+            height: 200px;
+            width: 200px;
+            margin-bottom: 16px;
+        }
+
+        .colour-text {
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+        }
+    </style>
+</head>
+<body>
+<div class="colour-list">
+    <div class="colour-header-container">
+        <h1 class="colour-header">Colour</h1>
+    </div>
+    {{range .}}
+        <div class="colour-container">
+            <img src="data:image/png;base64,{{.RGB | rgbToBase64Square}}" class="colour-box"
+                 alt="{{.Name | stringToLower}}">
+            <a href="https://en.wikipedia.org/wiki/{{.Article | formatArticle}}"
+               class="colour-text">{{.Name | stringToLower}}</a>
+        </div>
+    {{end}}
+</div>
+</body>
+</html>
