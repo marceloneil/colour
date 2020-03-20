@@ -60,7 +60,7 @@
     </div>
     {{range .}}
         <div class="colour-container">
-            <img src="data:image/png;base64,{{.RGB | rgbToBase64Square}}" class="colour-box"
+            <img src="data:image/jpeg;base64,{{.RGB | rgbToBase64Square}}" class="colour-box"
                  alt="{{.Name | stringToLower}}">
             <a href="https://en.wikipedia.org/wiki/{{.Article | formatArticle}}"
                class="colour-text">{{.Name | stringToLower}}</a>

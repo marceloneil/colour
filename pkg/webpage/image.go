@@ -7,7 +7,7 @@ import (
 	"image"
 	"image/color"
 	"image/draw"
-	"image/png"
+	"image/jpeg"
 )
 
 const SquareSize = 512
@@ -23,11 +23,11 @@ func RGBToBase64Square(rgb colours.RGB) string {
 	img := image.NewRGBA(rect)
 	draw.Draw(img, img.Bounds(), src, image.Point{}, draw.Src)
 
-	var pngBuffer bytes.Buffer
-	err := png.Encode(&pngBuffer, img)
+	var jpegBuffer bytes.Buffer
+	err := jpeg.Encode(&jpegBuffer, img, nil)
 	if err != nil {
 		panic(err)
 	}
 
-	return base64.StdEncoding.EncodeToString(pngBuffer.Bytes())
+	return base64.StdEncoding.EncodeToString(jpegBuffer.Bytes())
 }
